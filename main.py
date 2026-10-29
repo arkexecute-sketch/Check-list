@@ -1,6 +1,6 @@
 # Этот модуль отвечает за запуск приложения и работу меню
-import json
-from colorama import Fore, Style, init
+
+from colorama import Fore, init
 
 # Импортируем функции из других файлов
 from edit_tasks import adding_tasks, complete_tasks, delete_tasks
