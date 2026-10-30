@@ -11,7 +11,8 @@ def main ():
     # Объявляем словарь с тестовыми данными
     # init (autoreset=True) включает автоматический сброс оформления текста
     # от принта к принту
-    tasks = get_tasks('DB.json')
+    # tasks = get_tasks('DB.json')
+    tasks = []
     init(autoreset=True)
 
     menu = ''    # Переменная для работы с меню
@@ -31,11 +32,15 @@ def main ():
             if menu == '1':
                 tasks = adding_tasks(tasks, 'DB.json')
             elif menu == '2':
-                tasks = complete_tasks('DB.json')
+                tasks = complete_tasks(tasks)
             elif menu == '3':
-                tasks = delete_tasks('DB.json')
+                tasks = delete_tasks(tasks)
             elif menu == '4':
-                tasks_list('DB.json')
+                print('------------------------------------------------------')
+                for i in range(len(tasks)):
+                    print(tasks[i])
+                print('------------------------------------------------------')
+                # tasks_list('DB.json')
             elif menu != '0':
                 print(Fore.RED + 'Ввод некорректен!')
 
