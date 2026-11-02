@@ -25,10 +25,11 @@ def tasks_list(tasks):
         print(tasks[i])
 
     # Выводим прогресс в процентах с двумя знаками после запятой
-    print(f'Ваш прогресс: {round(get_progress(tasks), 2)}%')
+    progress = get_progress(tasks)
+    print(f'Ваш прогресс: {round(progress, 2)}%')
 
     # Выводим прогресс-бар в виде символов "*"
-    print('{' + '*' * int(get_progress(tasks)) + ' ' * (100 - int(get_progress(tasks))) + '}')
+    print('{' + '*' * int(progress) + ' ' * (100 - int(progress)) + '}')
     print('________________________________________________________________')
 
 
