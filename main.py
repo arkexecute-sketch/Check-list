@@ -6,6 +6,7 @@ from colorama import Fore, init
 from edit_tasks import adding_tasks, complete_tasks, delete_tasks
 from interface import tasks_list, get_tasks
 
+init(autoreset=True)
 
 def main ():
     # Объявляем словарь с тестовыми данными
@@ -13,7 +14,7 @@ def main ():
     # от принта к принту
     # tasks = get_tasks('DB.json')
     tasks = []
-    init(autoreset=True)
+
 
     menu = ''    # Переменная для работы с меню
 
@@ -36,10 +37,7 @@ def main ():
             elif menu == '3':
                 tasks = delete_tasks(tasks)
             elif menu == '4':
-                print('------------------------------------------------------')
-                for i in range(len(tasks)):
-                    print(tasks[i])
-                print('------------------------------------------------------')
+                tasks_list(tasks)
                 # tasks_list('DB.json')
             elif menu != '0':
                 print(Fore.RED + 'Ввод некорректен!')

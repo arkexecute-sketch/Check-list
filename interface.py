@@ -16,44 +16,37 @@ def get_tasks(db_file):
 
 # Эта функция выводит список задач
 # init(autoreset=True) включает автоматический сброс оформления текста от принта к принту
-def tasks_list(db_file):
-    init(autoreset=True)
-
+def tasks_list(tasks):
     print('________________________________________________________________')
-    tasks = get_tasks(db_file)
+    #tasks = get_tasks(db_file)
 
-    # Проходимся по всем задачам по ключам.
-    # Получаем наименование каждой задачи.
-    # Проверяем статус каждой задачи, если выполнена:
-    # Пишем "Выполнена", иначе: пишем "Ждет выполнения"
-    for i in tasks.keys():
-        for j in tasks[i].keys():
-            if tasks[i][j] == True:
-                print(f'{i}. {j} - '+ Fore.GREEN + 'Выполнена!')
-            else:
-                print(f'{i}. {j} - '+ Fore.RED + 'Ждет выполнения')
+    # Выводим в консоль список задач
+    for i in range(len(tasks)):
+        print(tasks[i])
 
     # Выводим прогресс в процентах с двумя знаками после запятой
-    print(f'Ваш прогресс: {round(get_progress(db_file), 2)}%')
+    print(f'Ваш прогресс: {round(get_progress(tasks), 2)}%')
 
     # Выводим прогресс-бар в виде символов "*"
-    print('{' + '*' * int(get_progress(db_file)) + ' ' * (100 - int(get_progress(db_file))) + '}')
+    print('{' + '*' * int(get_progress(tasks)) + ' ' * (100 - int(get_progress(tasks))) + '}')
     print('________________________________________________________________')
 
 
 # Рассчитываем прогресс выполнения задач
-def get_progress(db_file):
-    tasks = get_tasks(db_file)
+def get_progress(tasks):
+    # tasks = get_tasks(db_file)
     progress = 0
 
-    # Проходимся по ключам словаря.
-    # Проходимся по всем задачам, проверяя, выполнены ли они и если выполнены,
-    # то добавляем единицу в счетчик прогресса.
-    for task_id in tasks.keys():
-        for k, v in tasks[task_id].items():
-            if v == True:
-                progress += 1
+    # Проходимся по всем задачам в чек-листе, проверяя, выполнены ли они.
+    # И если выполнены, то добавляем единицу в счетчик прогресса.
+    for task in tasks:
+        if task.state == True:
+            progress += 1
 
+    # Если задач нет, то выводим нулевой прогресс
+    if len(tasks) == 0:
+        progress_percent = 0
+        return progress_percent
     # Приводим вид счетчика прогресса к процентам
     progress_percent = (progress / len(tasks) * 100)
     return progress_percent
