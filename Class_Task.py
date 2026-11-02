@@ -54,7 +54,6 @@ class MainTask(Task):
     # Этот метод определяет что будет выводиться при вызове класса,
     # например, через print(main_task)
     def __str__(self):
-        init(autoreset=True)
 
         if self.state == True:
             output = f'{self.serial_numb}. {self.description} - ' + Fore.GREEN + 'Выполнена!'
