@@ -15,17 +15,21 @@ def get_tasks(db_file):
 
 
 # Эта функция выводит список задач
-# init(autoreset=True) включает автоматический сброс оформления текста от принта к принту
-def tasks_list(tasks):
+def tasks_list(check_list):
     print('________________________________________________________________')
     #tasks = get_tasks(db_file)
+    tasks = check_list.tasks
 
+    print(check_list.title)
     # Выводим в консоль список задач
     for i in range(len(tasks)):
         print(tasks[i])
+        for j in range(len(tasks[i].sub_tasks)):
+            print(f'    {i+1}.{tasks[i].sub_tasks[j]}')
+
 
     # Выводим прогресс в процентах с двумя знаками после запятой
-    progress = get_progress(tasks)
+    progress = get_progress(check_list)
     print(f'Ваш прогресс: {round(progress, 2)}%')
 
     # Выводим прогресс-бар в виде символов "*"
@@ -34,8 +38,9 @@ def tasks_list(tasks):
 
 
 # Рассчитываем прогресс выполнения задач
-def get_progress(tasks):
+def get_progress(check_list):
     # tasks = get_tasks(db_file)
+    tasks = check_list.tasks
     progress = 0
 
     # Проходимся по всем задачам в чек-листе, проверяя, выполнены ли они.

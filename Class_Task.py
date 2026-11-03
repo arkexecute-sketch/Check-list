@@ -3,8 +3,9 @@
 from colorama import Fore, Style, init
 
 class CheckList:
-    def __init__(self, title):
+    def __init__(self, serial_numb, title):
         self.title = title
+        self.serial_numb = serial_numb
         self.tasks = []
 
     def add_task(self, task):
@@ -14,7 +15,8 @@ class CheckList:
     def __str__(self):
         output = ''
         for i in range(len(self.tasks)):
-            output += f'{self.tasks[i].serial_numb}. {self.tasks[i].description} - {self.tasks[i].state}'
+            output += (f'{self.tasks[i].serial_numb}. '
+                       f'{self.tasks[i].description} - {self.tasks[i].state}')
 
         return output
 
@@ -56,10 +58,12 @@ class MainTask(Task):
     def __str__(self):
 
         if self.state == True:
-            output = f'{self.serial_numb}. {self.description} - ' + Fore.GREEN + 'Выполнена!'
+            output = (f'{self.serial_numb}. '
+                      f'{self.description} - ') + Fore.GREEN + 'Выполнена!'
 
         if self.state == False:
-            output = f'{self.serial_numb}. {self.description} - ' + Fore.RED + 'Ждет выполнения!'
+            output = (f'{self.serial_numb}. '
+                      f'{self.description} - ') + Fore.RED + 'Ждет выполнения!'
 
         return output
 
