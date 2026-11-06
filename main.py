@@ -36,13 +36,15 @@ def main ():
             symbol_for_add = ['д', 'Д', 'l', 'L']
             symbol_for_del = ['у', 'У', 'e', 'E']
 
+            print()
             for i in range(len(check_lists)):
                 print(f'{check_lists[i].serial_numb}. {check_lists[i].title}')
+            print()
 
             print('Выберите чек лист по номеру')
             print('Введите "д" чтобы добавить чек лист')
             print('Введите "у" чтобы удалить чек лист')
-            print('Введите 0 для выхода из программы')
+            print('Введите 0 для выхода из программы\n')
             check_list_menu = input()
 
 
@@ -75,12 +77,13 @@ def main ():
             task_menu = ''
 
             while task_menu not in control_symbol and task_menu != '0':
-                print('Чтобы добавить подзадачи, введите номер задачи')
+                print(f'{check_list.title}')
+                print('\nЧтобы работать с подзадачами, введите номер задачи')
                 print('д - Добавить задачу')
                 print('з - Завершить задачу')
                 print('у - Удалить задачу')
                 print('с - Текущий список задач')
-                print('0 - Завершить работу с чек-листом')
+                print('0 - Завершить работу с чек-листом\n')
                 task_menu = input()
 
                 if task_menu in symbol_for_add:

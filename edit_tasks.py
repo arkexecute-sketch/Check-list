@@ -120,7 +120,7 @@ def complete_tasks(check_list):
         try:
             get_complete = int(input('Введите номер задачи,'
                                      ' которую вы завершили (0 - для отмены): '))
-            if get_complete == '0':
+            if get_complete == 0:
                 return tasks
         except ValueError:
             get_complete = -1
@@ -143,7 +143,7 @@ def complete_sub_tasks(task):
         try:
             get_complete = int(input('Введите номер подзадачи,'
                                      ' которую вы завершили (0 - для отмены): '))
-            if get_complete == '0':
+            if get_complete == 0:
                 return tasks
         except ValueError:
             get_complete = -1

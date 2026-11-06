@@ -3,6 +3,7 @@ import json
 from colorama import Fore, Style, init
 
 
+
 # Эта функция получает список задач из json файла
 def get_tasks(db_file):
     # В первой строчке мы прописываем из какого файла будем получать информацию
@@ -20,7 +21,7 @@ def tasks_list(check_list):
     #tasks = get_tasks(db_file)
     tasks = check_list.tasks
 
-    print(check_list.title)
+    print(f'{check_list.title}\n')
     # Выводим в консоль список задач
     for i in range(len(tasks)):
         print(tasks[i])
@@ -56,3 +57,39 @@ def get_progress(check_list):
     # Приводим вид счетчика прогресса к процентам
     progress_percent = (progress / len(tasks) * 100)
     return progress_percent
+
+
+# def print_check_list_menu(check_lists):
+#     control_symbol = []
+#     check_list_menu = ''
+#     # Цикл для меню работы с чек-листами
+#     while check_list_menu not in control_symbol:
+#         # Списки символов, которые необходимо ввести
+#         # для добавления или удаления чек-листа
+#         symbol_for_add = ['д', 'Д', 'l', 'L']
+#         symbol_for_del = ['у', 'У', 'e', 'E']
+#
+#         for i in range(len(check_lists)):
+#             print(f'{check_lists[i].serial_numb}. {check_lists[i].title}')
+#
+#         print('Выберите чек лист по номеру')
+#         print('Введите "д" чтобы добавить чек лист')
+#         print('Введите "у" чтобы удалить чек лист')
+#         print('Введите 0 для выхода из программы')
+#         check_list_menu = input()
+#
+#         if check_list_menu in control_symbol:
+#             check_list = check_lists[int(check_list_menu) - 1]
+#             return check_list
+#
+#         elif check_list_menu in symbol_for_add:
+#             adding_check_list(check_lists)
+#
+#         elif check_list_menu in symbol_for_del:
+#             check_lists = delete_check_list(check_lists)
+#
+#         elif check_list_menu != '0':
+#             print(Fore.RED + 'Ввод некорректен!')
+#
+#         if check_list_menu == '0':
+#             return 0
